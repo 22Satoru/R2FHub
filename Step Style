@@ -1,0 +1,183 @@
+-- step script
+
+
+
+local plr = game.Players.LocalPlayer
+local pgui = plr.PlayerGui
+local interf = pgui.Interface
+local bt = interf.Battle
+local main = bt.Main
+
+local function FillHeat()
+	local Event = game:GetService("ReplicatedStorage").Events.ME
+
+	for i=1,6 do
+		local A_1 =  {
+			[1] = "heat", 
+			[2] = game:GetService("ReplicatedStorage").Moves.Taunt
+		}
+		Event:FireServer(A_1)
+	end
+end
+game:GetService("RunService").RenderStepped:Connect(change_color)
+
+local function update_action(v, data)
+	local move = game.ReplicatedStorage.Moves[v.Value]
+
+	for i,v in pairs(data) do
+		local value, name = v.Value, v.Name
+
+		local str = move:FindFirstChild(name)
+
+		if str.ClassName == "Animation" then
+			str.AnimationId = value
+		else
+			if not str then
+				str = Instance.new("StringValue")
+				str.Value = value
+				str.Name = name
+				str.Parent = move
+			else
+				str.Value = value
+			end
+		end
+	end
+end
+
+local rushstyle = game.ReplicatedStorage.Styles.Rush
+local brawlerstyle = game.ReplicatedStorage.Styles.Brawler
+local beaststyle = game.ReplicatedStorage.Styles.Beast
+
+--rushstyle["H_Stunning"]:Clone().Parent = brawlerstyle
+
+-- all of em
+
+local styles = {
+	[brawlerstyle] = {
+		actions = {
+			"StanceStrike",
+			"H_BlockingEnemy"
+		},
+		to = rushstyle
+	},
+}--combined styles
+
+-- custom styles
+
+local custom_actions = {
+	[rushstyle] = {
+		{
+			Name = "H_Distanced",
+			Value = "H_Escape"
+		},
+
+		{
+			Name = "H_AirFallen",
+			Value = "H_Knockout"
+		},
+
+		{
+			Name = "H_FallenDown",
+			Value = "H_FallenFinisher"
+		},
+
+		{
+			Name = "Strike1",
+			Value = "FGetup"
+		},
+
+		{
+			Name = "VisualName",
+			Value = "Step"
+		},
+
+		{
+			Name = "Color",
+			Value = Color3.new(1,0,1)
+		},
+
+		{
+			Name = "Speed",
+			Value = 1.2
+		}
+	},
+}
+
+-- style complier
+
+local function create_value(value, parent)
+	local type = typeof(value)
+
+	if type == "number" then
+		if math.floor(value) == value then
+			local z = Instance.new("IntValue")
+			z.Parent = parent
+			return z
+		end
+
+		local z = Instance.new("NumberValue")
+		z.Parent = parent
+		return z
+	end
+
+	local lookup = {
+		string = "StringValue",
+		Boolean = "BoolValue",
+		Color3 = "Color3Value"
+	}
+
+	local z = Instance.new(lookup[type] or lookup.string)
+	z.Parent = parent
+	return z
+end
+
+for style, actions in pairs(custom_actions) do
+	for i,v in pairs(actions) do
+		if not style:FindFirstChild(v.Name) then
+			local stringval = create_value(v.Value, style)
+			for i,v in pairs(v) do
+				stringval[i] = v
+			end
+		else
+			local t = style:FindFirstChild(v.Name)
+			for i,v in pairs(v) do
+				t[i] = v
+			end
+		end
+	end
+end
+
+for style, actions in pairs(styles) do
+	for i,actionname in pairs(actions.actions) do
+		local action = style:FindFirstChild(actionname)
+
+		if not action then
+			continue
+		end
+
+		if actions.to:FindFirstChild(actionname) then
+			actions.to[actionname]:Destroy()
+		end
+
+		action:Clone().Parent = actions.to
+	end
+end
+
+game.ReplicatedStorage.Styles.Rush.Rush1.Value = "BEvadeStrikeLeft"
+game.ReplicatedStorage.Styles.Rush.Rush2.Value = "BEvadeStrikeRight"
+game.ReplicatedStorage.Styles.Rush.Rush3.Value = "BEvadeStrikeLeft"
+game.ReplicatedStorage.Styles.Rush.Rush4.Value = "BEvadeStrikeRight"
+game.ReplicatedStorage.Styles.Rush.Rush5.Value = "BEvadeStrikeLeft"
+game.ReplicatedStorage.Styles.Rush.Rush6.Value = "BEvadeStrikeRight"
+game.ReplicatedStorage.Styles.Rush.Rush7.Value = "BEvadeStrikeLeft"
+game.ReplicatedStorage.Styles.Rush.Rush8.Value = "BEvadeStrikeRight"
+
+
+game.ReplicatedStorage.Styles.Rush.Strike1.Value = "龍Attack4"
+game.ReplicatedStorage.Styles.Rush.Strike2.Value = "龍2Strike4"
+game.ReplicatedStorage.Styles.Rush.Strike3.Value = "RStrike4"
+game.ReplicatedStorage.Styles.Rush.Strike4.Value = "B2Strike2"
+game.ReplicatedStorage.Styles.Rush.Strike5.Value = "DashAttack"
+game.ReplicatedStorage.Styles.Rush.Strike6.Value = "BTStrike3"
+
+

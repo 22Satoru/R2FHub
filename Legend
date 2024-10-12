@@ -456,7 +456,7 @@ v.Name = "HeatNeeded"
                                                                                                                                                                                                                                                                                                                                                                                                                                                 main.Heat.noheattho.Text = "Heat Actions Disabled"
 	                                                                                                                                                                                                                                                                                                                                                                                                                                            main.Heat.noheattho.Size = UDim2.new(10, 0, 1, 0)
  
-	                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Text = "Made By Duck_SillyDJ (uwu)"
+	                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Text = "Made By 22_Satoru (real)"
 	                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Visible = true
 --------------------------Taunt-----------------------------------
 if game.ReplicatedStorage.Moves:FindFirstChild("DragonTaunt") then
@@ -1512,44 +1512,23 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Ultimate Essence" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
-        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_GUltimateEssence.MoveName.Value
+        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_GUltimateEssence.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
         Anim:AdjustSpeed(0.9)
         Anim:Play()
         play_ingamesound("Ignite")
         task.wait(0.4)
-        play_ingamesound("TigerSwing")
+        play_ingamesound("Bass")
         task.wait(0.6)
-        play_ingamesound("MassiveSlap")
+        play_ingamesound("BoneBreak")
         task.wait(0.3)
         Anim:Destroy()
     end
 end)
 
-local Player = game.Players.LocalPlayer
-local Rep = game.ReplicatedStorage
-local Char = Player.Character
-local Main = Player.PlayerGui.Interface.Battle.Main
 
-Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
-    if Main.HeatMove.TextLabel.Text == "Essence of Fast Footwork [Back]" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_SumoSlap.MoveName.Value
-        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_SumoSlap.Anim)
-        Anim.Priority = Enum.AnimationPriority.Action4
-        Anim:AdjustSpeed(0.9)
-        Anim:Play()
-        play_ingamesound("Teleport")
-        play_ingamesound("Slap")
-        task.wait(0.55)
-        play_ingamesound("Slap")
-        task.wait(0.45)
-        play_ingamesound("Slap")
-        task.wait(0.9)
-        play_ingamesound("MassiveSlap")
-        Anim:Destroy()
-    end
-end)
+
 
 local DragonText = "Dragon"
 local DragonColor = Color3.new(0.95, 0.05, 0.1)

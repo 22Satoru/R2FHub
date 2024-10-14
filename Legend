@@ -1528,6 +1528,29 @@ Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
 end)
 
 
+local Player = game.Players.LocalPlayer
+local Rep = game.ReplicatedStorage
+local Char = Player.Character
+local Main = Player.PlayerGui.Interface.Battle.Main
+
+Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+    if Main.HeatMove.TextLabel.Text == "Essence of Fast Footwork [Back]" then
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_SumoSlap.MoveName.Value
+        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_SumoSlap.Anim)
+        Anim.Priority = Enum.AnimationPriority.Action4
+        Anim:AdjustSpeed(0.9)
+        Anim:Play()
+        play_ingamesound("Teleport")
+        play_ingamesound("Slap")
+        task.wait(0.55)
+        play_ingamesound("Slap")
+        task.wait(0.45)
+        play_ingamesound("Slap")
+        task.wait(0.9)
+        play_ingamesound("MassiveSlap")
+        Anim:Destroy()
+    end
+end)
 
 
 local DragonText = "Dragon"

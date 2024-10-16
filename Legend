@@ -1547,7 +1547,7 @@ Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
         task.wait(0.45)
         play_ingamesound("Slap")
         task.wait(0.9)
-        play_ingamesound("MassiveSlap")
+        play_ingamesound("Slap")
         Anim:Destroy()
     end
 end)

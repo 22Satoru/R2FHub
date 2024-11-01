@@ -1,0 +1,88 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+if not Rayfield then
+    print("Failed to load Rayfield library.")
+    return
+end
+
+local Window = Rayfield:CreateWindow({
+   Name = "Right 2 Fight",
+   LoadingTitle = "R2F Hub",
+   LoadingSubtitle = "by 22_Satoru",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+   KeySystem = false,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Hello"}
+   }
+})
+
+if not Window then
+    print("Failed to create window.")
+    return
+end
+
+local MainTab = Window:CreateTab("Styles", 4483362458)
+local Section = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "Executed Script",
+   Content = "R2F",
+   Duration = 6.5,
+   Image = nil,
+   Actions = {
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+            print("The user tapped Okay!")
+         end
+      }
+   },
+})
+
+-- Styles Buttons
+local function createButton(tab, name, callback)
+    local Button = tab:CreateButton({
+        Name = name,
+        Callback = callback,
+    })
+    if not Button then
+        print("Failed to create button: " .. name)
+    end
+end
+
+createButton(MainTab, "Koi Style", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ducksy9340/R2FModding/main/KoiStyle.lua"))()
+    print('Koi Style')
+end)
+
+createButton(MainTab, "Legend Style", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Legend"))()
+    print('Legend Style')
+end)
+
+createButton(MainTab, "Tiger Style", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/McMusty/McMusty/refs/heads/main/SaejimaTigerStyle"))()      
+    print('Tiger Style')
+end)
+
+createButton(MainTab, "Step Style", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Step%20Style"))()
+    print('Step Style')
+end)
+
+-- Player Tab

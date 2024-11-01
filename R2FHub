@@ -1,0 +1,61 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+if not Rayfield then
+    print("Failed to load Rayfield library.")
+    return
+end
+
+local Window = Rayfield:CreateWindow({
+   Name = "Right 2 Fight",
+   LoadingTitle = "R2F Hub",
+   LoadingSubtitle = "by 22_Satoru",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+   KeySystem = false,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Hello"}
+   }
+})
+
+if not Window then
+    print("Failed to create window.")
+    return
+end
+
+local MainTab = Window:CreateTab("Styles", 4483362458)
+local Section = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "Executed Script",
+   Content = "R2F",
+   Duration = 6.5,
+   Image = nil,
+   Actions = {
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+            print("The user tapped Okay!")
+         end
+      }
+   },
+})
+
+-- Styles Buttons
+local function createButton(tab, name, callback)
+    local Button = tab:CreateButton({
+        Name = name,
+        Callback = ca

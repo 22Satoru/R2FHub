@@ -1,10 +1,5 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-if not Rayfield then
-    print("Failed to load Rayfield library.")
-    return
-end
-
 local Window = Rayfield:CreateWindow({
    Name = "Right 2 Fight",
    LoadingTitle = "R2F Hub",
@@ -31,11 +26,6 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-if not Window then
-    print("Failed to create window.")
-    return
-end
-
 local MainTab = Window:CreateTab("Styles", 4483362458)
 local Section = MainTab:CreateSection("Main")
 
@@ -55,34 +45,71 @@ Rayfield:Notify({
 })
 
 -- Styles Buttons
-local function createButton(tab, name, callback)
-    local Button = tab:CreateButton({
-        Name = name,
-        Callback = callback,
-    })
-    if not Button then
-        print("Failed to create button: " .. name)
-    end
-end
+local Button = MainTab:CreateButton({
+   Name = "Koi Style",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/ducksy9340/R2FModding/main/KoiStyle.lua"))()
+      print('Koi Style')
+   end,
+})
 
-createButton(MainTab, "Koi Style", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/ducksy9340/R2FModding/main/KoiStyle.lua"))()
-    print('Koi Style')
-end)
+local Button = MainTab:CreateButton({
+   Name = "Legend Style",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Legend"))()
+      print('Legend Style')
+   end,
+})
 
-createButton(MainTab, "Legend Style", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Legend"))()
-    print('Legend Style')
-end)
+local Button = MainTab:CreateButton({
+   Name = "Tiger Style",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/McMusty/McMusty/refs/heads/main/SaejimaTigerStyle"))()      
+      print('Tiger Style')
+   end,
+})
 
-createButton(MainTab, "Tiger Style", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/McMusty/McMusty/refs/heads/main/SaejimaTigerStyle"))()      
-    print('Tiger Style')
-end)
-
-createButton(MainTab, "Step Style", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Step%20Style"))()
-    print('Step Style')
-end)
+local Button = MainTab:CreateButton({
+   Name = "Step Style",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Step%20Style"))()
+      print('Step Style')
+   end,
+})
 
 -- Player Tab
+local PlayerTab = Window:CreateTab("Player", nil)
+local Section = PlayerTab:CreateSection("Player")
+
+-- Player Buttons
+local Button = PlayerTab:CreateButton({
+   Name = "Infinite Heat",
+   Callback = function()
+      loadstring(game:HttpGet("https://rawscripts.net/raw/Right-2-Fight-V0.4.0-Infinite-Heat-15471"))()
+      print('Infinite Heat')
+   end,
+})
+
+local Button = PlayerTab:CreateButton({
+   Name = "Kiryu Voice",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Kiryu%20Voice"))()
+      print('Kiryu Voice')
+   end,
+})
+
+local Button = PlayerTab:CreateButton({
+   Name = "Old Sounds",
+   Callback = function()
+      loadstring(game:HttpGet("https://rawscripts.net/raw/Right-2-Fight-V0.4.0-November-01-Sounds-16170"))()        
+      print('Old Sounds')
+   end,
+})
+
+local Button = PlayerTab:CreateButton({
+   Name = "Essence of Drop Kick",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/McMusty/McMusty/refs/heads/main/EssenceOfDropkicking"))()    
+      print('Legend Dropkick')
+   end,
+})

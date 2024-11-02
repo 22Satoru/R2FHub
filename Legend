@@ -1,3 +1,4 @@
+
 local plr = game.Players.LocalPlayer
 local pgui = plr.PlayerGui
 local interf = pgui.Interface
@@ -1547,7 +1548,7 @@ Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
         task.wait(0.45)
         play_ingamesound("Slap")
         task.wait(0.9)
-        play_ingamesound("Slap")
+        play_ingamesound("MassiveSlap")
         Anim:Destroy()
     end
 end)
@@ -1748,12 +1749,9 @@ plr.Character.LowerTorso.CFrame = cframe
 sendNotification("Style Loaded")
 task.wait(1)
 
----Badge 
-pgui.Interface.Battle.Main.GUY.GUY.Image = "rbxassetid://13919012508"
 ----------------Tab names
 menu.Abilities.Frame.Frame.Frame.Tabs.Tabs.Brawler.Filled.Title.Text = "Legend"
-menu.Abilities.Frame.Frame.Frame.Tabs.Tabs.Rush.Filled.Title.Text = "Rush"
-menu.Abilities.Frame.Frame.Frame.Tabs.Tabs.Beast.Filled.Title.Text = "Beast"
+menu.Abilities.Frame.Frame.Frame.Tabs.Tabs.
 -----------------Ability Names
 menu.Abilities.Frame.Frame.Frame.List.ListFrame["Counter Hook"].Generic.Label.Text = "Komaki Tiger Drop"
 menu.Abilities.Frame.Frame.Frame.List.ListFrame["Guru Parry"].Generic.Label.Text = "Komaki Parry"

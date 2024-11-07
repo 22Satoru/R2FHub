@@ -54,10 +54,10 @@ local Button = MainTab:CreateButton({
 })
 
 local Button = MainTab:CreateButton({
-   Name = "Koi Style",
+   Name = "Reborn Style",
    Callback = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/22Satoru/R2FHub/refs/heads/main/Legend"))()
-      print('Legend Style')
+      loadstring(game:HttpGet("https://github.com/22Satoru/R2FHub/raw/refs/heads/main/Reborn"))()
+      print('Reborn Style')
    end,
 })
 
